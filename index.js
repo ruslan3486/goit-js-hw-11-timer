@@ -67,28 +67,28 @@ class CountdownTimer {
 
 
 
-
-
-
-    
-
 const timer = new CountdownTimer({
     onTick: updateClockFace,
   selector: '#timer-1',
   targetDate: new Date('Sep, 03, 2021'),
 });
+
+
+    
     
 
 function updateClockFace({ days, hours, mins, secs }) {
 
- this.selector = `${days}`
+ 
         refs.days.textContent = `${days}`;
         refs.hours.textContent = `${hours}`;
         refs.mins.textContent = `${mins}`;
         refs.secs.textContent = `${secs}`;
 
     
-  };   
+
+};
+    
 
 
 

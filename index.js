@@ -1,57 +1,36 @@
-let refs = {
-    
-            days: document.querySelector('[data-value="days"]'),
-            hours: document.querySelector('[data-value="hours"]'),
-            mins: document.querySelector('[data-value="mins"]'),
-            secs: document.querySelector('[data-value="secs"]'),
-
-}
-
-
-
-
 class CountdownTimer {
 
-    constructor({ targetDate, onTick, selector }) {
+    constructor({ targetDate, selector }) {
         
-        this.onTick = onTick;
+       
         this.selector = selector;
             
         this.targetDate = targetDate;
-            
-        this.start();
+        
        
+            
     }
-
-   
-    
-    start() {
-        this.targetDate = new Date(this.targetDate).getTime();
+     start() {
+        let startTime = this.targetDate.getTime();
          setInterval(() => {
 
 
-            let now = new Date();//текущее время
-            let t = this.targetDate - now;
+            const now = new Date();//текущее время
+            const t = startTime - now;
             const timeStart = this.getTimeComponents(t);
-             this.onTick(timeStart);
+             this.updateClockFace(timeStart);
             
              
         }, 1000);
 
-    }
+    }  
     
-    
-
- 
-
-    pad(value) {
+pad(value) {
         return String(value).padStart(2, '0');
     };
-
-
-
-
-
+   
+    
+    
     getTimeComponents(time) {
     const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
     const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
@@ -59,7 +38,16 @@ class CountdownTimer {
     const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
 
     return { days, hours, mins, secs };
-  }
+    }
+
+    
+     updateClockFace({ days, hours, mins, secs }) {
+
+         const timerId = document.querySelector(this.selector);
+        
+         timerId.textContent = `${days} : ${hours} : ${mins} : ${secs}`;
+
+};
 
 
 
@@ -68,42 +56,37 @@ class CountdownTimer {
 
 
 const timer = new CountdownTimer({
-    onTick: updateClockFace,
+   
   selector: '#timer-1',
   targetDate: new Date('Sep, 03, 2021'),
 });
 
+const timer1 = new CountdownTimer({
+   
+  selector: '#timer-2',
+  targetDate: new Date('Nov, 02, 2021'),
+});
+
+const timer3 = new CountdownTimer({
+   
+  selector: '#timer-3',
+  targetDate: new Date('Dec, 01, 2021'),
+});
+
+
+
+timer.start()
+timer1.start()
+timer3.start()
 
     
-    
-
-function updateClockFace({ days, hours, mins, secs }) {
 
  
-        refs.days.textContent = `${days}`;
-        refs.hours.textContent = `${hours}`;
-        refs.mins.textContent = `${mins}`;
-        refs.secs.textContent = `${secs}`;
 
     
 
-};
+
+
+
+
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  
-
-

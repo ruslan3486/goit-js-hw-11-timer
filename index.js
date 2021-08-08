@@ -1,3 +1,5 @@
+
+
 class CountdownTimer {
 
     constructor({ targetDate, selector }) {
@@ -7,7 +9,7 @@ class CountdownTimer {
             
         this.targetDate = targetDate;
         
-       
+     
             
     }
      start() {
@@ -42,11 +44,16 @@ pad(value) {
 
     
      updateClockFace({ days, hours, mins, secs }) {
-
-         const timerId = document.querySelector(this.selector);
-        
-         timerId.textContent = `${days} : ${hours} : ${mins} : ${secs}`;
-
+      
+       
+       
+       const timerId = document.querySelector(this.selector).children;
+       
+        timerId[0].childNodes[1].textContent = `${days}`;
+        timerId[1].childNodes[1].textContent = `${hours}`;
+        timerId[2].childNodes[1].textContent = `${mins}`;
+        timerId[3].childNodes[1].textContent = `${secs}`;
+       
 };
 
 
@@ -75,9 +82,11 @@ const timer3 = new CountdownTimer({
 
 
 
+
 timer.start()
 timer1.start()
 timer3.start()
+
 
     
 

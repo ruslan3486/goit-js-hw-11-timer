@@ -1,5 +1,4 @@
 
-
 class CountdownTimer {
 
     constructor({ targetDate, selector }) {
@@ -55,12 +54,7 @@ pad(value) {
         timerId[3].childNodes[1].textContent = `${secs}`;
        
 };
-
-
-
- }   
-
-
+}
 
 const timer = new CountdownTimer({
    
@@ -89,6 +83,91 @@ timer3.start()
 
 
     
+
+
+// 2 способ
+
+
+// class CountdownTimer {
+
+//   constructor({ targetDate, selector }) {
+        
+       
+//     this.selector = selector;
+            
+//     this.targetDate = targetDate;
+//     this.daysSpan = document.querySelector(`${selector} .value[data-value="days"]`);
+//     this.hoursSpan = document.querySelector(`${selector} .value[data-value="hours"]`);
+//     this.minutesSpan = document.querySelector(`${selector} .value[data-value="mins"]`);
+//     this.secondsSpan = document.querySelector(`${selector} .value[data-value="secs"]`);
+        
+     
+            
+//   }
+//   start() {
+//     let startTime = this.targetDate.getTime();
+//     setInterval(() => {
+
+
+//       const now = new Date();//текущее время
+//       const t = startTime - now;
+//       const timeStart = this.getTimeComponents(t);
+      
+            
+             
+//     }, 1000);
+
+//   }
+    
+//   pad(value) {
+//     return String(value).padStart(2, '0');
+//   };
+   
+    
+    
+//   getTimeComponents(time) {
+//     this.daysSpan.textContent = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+//     this.hoursSpan.textContent = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+//     this.minutesSpan.textContent = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+//     this.secondsSpan.textContent = this.pad(Math.floor((time % (1000 * 60)) / 1000));
+
+   
+//    } 
+
+//  }   
+     
+
+// const timer = new CountdownTimer({
+   
+//   selector: '#timer-1',
+//   targetDate: new Date('Sep, 03, 2021'),
+// });
+
+// const timer1 = new CountdownTimer({
+   
+//   selector: '#timer-2',
+//   targetDate: new Date('Nov, 02, 2021'),
+// });
+
+// const timer3 = new CountdownTimer({
+   
+//   selector: '#timer-3',
+//   targetDate: new Date('Dec, 01, 2021'),
+// });
+
+  
+// timer.start()
+// timer1.start()
+// timer3.start()
+
+
+
+
+
+
+
+
+
 
  
 
